@@ -63,8 +63,6 @@ public class GarageDoor {
             FileHandler fh = new FileHandler("/home/pi/garageDoor.log", true);
             logger.addHandler(fh);
             fh.setFormatter(new SimpleFormatter());
-             
-            System.out.println("Print: " + currTime.getTime().toString());
         }
         catch (Exception e) {
             
