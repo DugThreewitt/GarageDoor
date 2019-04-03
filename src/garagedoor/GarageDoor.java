@@ -53,32 +53,18 @@ public class GarageDoor {
         repeater.start();
 
         
-        TimeZone tz = TimeZone.getTimeZone("America/Chicago");
-        Calendar currTime = Calendar.getInstance(tz, Locale.US);
-       // String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-              
-       // System.setProperty("java.util.logging.SimpleFormatter.format",
-       //      "[%1$tF %1$tT] [%4$-7s] %5$s %n");
+       // TimeZone tz = TimeZone.getTimeZone("America/Chicago");
+       // Calendar currTime = Calendar.getInstance(tz, Locale.US);
+
         Logger logger = Logger.getLogger("GarageDoor");
 
         
         try {
             FileHandler fh = new FileHandler("/home/pi/garageDoor.log", true);
             logger.addHandler(fh);
-            fh.setFormatter(new SimpleFormatter() {
-                 private static final String format = "[%1$tF %1$tT] [%2$-7s] %3$s %n";
-
-                @Override
-                public synchronized String format(LogRecord lr) {
-                     return String.format(format,
-                            currTime.getTime(),
-                            lr.getLevel().getLocalizedName(),
-                            lr.getMessage()
-                     );
-                 }
-             });;
+            fh.setFormatter(new SimpleFormatter());
              
-            System.out.println(currTime.getTime().toString());
+            System.out.println("Print: " + currTime.getTime().toString());
         }
         catch (Exception e) {
             
